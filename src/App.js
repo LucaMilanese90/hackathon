@@ -114,7 +114,7 @@ function App() {
             style={customStyles}
             contentLabel="Example Modal"
           >
-            <WinPage modalData={modalData} />
+            <WinPage modalData={modalData} setIsOpen={setIsOpen} />
           </Modal>
         </Route>
       </Switch>
