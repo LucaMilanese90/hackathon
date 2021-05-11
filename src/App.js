@@ -108,6 +108,7 @@ function App() {
             currentQuestion={currentQuestion}
             setCurrentQuestion={setCurrentQuestion}
             setIsOpen={setIsOpen}
+            modalData={modalData}
           />
           <Grid position={position} grid={grid} />
           <Modal

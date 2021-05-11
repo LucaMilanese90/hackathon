@@ -9,6 +9,7 @@ const Questions = ({
   currentQuestion,
   setCurrentQuestion,
   setIsOpen,
+  modalData,
 }) => {
   const questions = [
     {
@@ -116,7 +117,7 @@ const Questions = ({
   ];
 
   const [showScore, setShowScore] = useState(false);
-  const [showAnswer, setShowAnswer] = useState(false);
+  //   const [showAnswer, setShowAnswer] = useState(false);
   const [score, setScore] = useState(0);
   const [battery, setBattery] = useState(3);
   const [message, setMessage] = useState('');
@@ -128,6 +129,10 @@ const Questions = ({
   const start = () => {
     audio.play();
   };
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
@@ -152,7 +157,8 @@ const Questions = ({
     const nextQuestion = currentQuestion + 1;
     if (score < 6 && battery > 1) {
       setCurrentQuestion(nextQuestion);
-      setShowAnswer(true);
+      //   openModal();
+      //   setShowAnswer(true);
     } else {
       setShowScore(true);
     }
@@ -208,12 +214,6 @@ const Questions = ({
         <div className="score-section">
           You scored {score} out of {questions.length}
         </div>
-      ) : showAnswer ? (
-        <Answer
-          message={message}
-          setShowAnswer={setShowAnswer}
-          setIsOpen={setIsOpen}
-        />
       ) : (
         <>
           <div className="question-section">
@@ -235,9 +235,9 @@ const Questions = ({
                   /* (answsetIsCorrecterOption.isCorrect) */
                   handleAnswerOptionClick(answerOption.isCorrect);
                   /*  setCorrect(answerOption.isCorrect); */
-                  /* setTimeout(() => {
+                  setTimeout(() => {
                     openModal();
-                  }, 1000); */
+                  }, 1000);
                 }}
               >
                 {answerOption.answerText}
