@@ -8,7 +8,7 @@ const Grid = ({ grid, position }) => {
             className={
               i + 1 === position[0] && index + 1 === position[1]
                 ? 'visible-moving'
-                : i === 1 && index === 6
+                : i === 2 && index === 0
                 ? 'visible-fixed'
                 : 'not-visible'
             }

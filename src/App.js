@@ -52,7 +52,7 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 function App() {
-  const [position, setPosition] = useState([7, 2]);
+  const [position, setPosition] = useState([5, 3]);
   const [grid, setGrid] = useState([[]]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -85,6 +85,10 @@ function App() {
     setCurrentIndex(currentIndex + 1);
   }
 
+  useEffect(() => {
+    console.log(currentIndex);
+  }, [currentIndex]);
+
   return (
     <div className="App">
       <Switch>
@@ -104,7 +108,6 @@ function App() {
             currentQuestion={currentQuestion}
             setCurrentQuestion={setCurrentQuestion}
             setIsOpen={setIsOpen}
-            setCurrentIndex={setCurrentIndex}
           />
           <Grid position={position} grid={grid} />
           <Modal

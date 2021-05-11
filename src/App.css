@@ -1,5 +1,5 @@
-.App{
-  width:100%;
+.App {
+  width: 100%;
 }
 body {
   margin: 0;
@@ -125,17 +125,15 @@ button svg {
 .visible-moving,
 .visible-fixed,
 .not-visible {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   /* border: 1px solid black; */
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   background-image: url('./assets/Mars_Valles_Marineris.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
-
-

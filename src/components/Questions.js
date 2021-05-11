@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Answer from './Answer';
+import audioSignal from '../assets/audio-signal.m4a';
 
 const Questions = ({
   setGrid,
@@ -8,7 +9,6 @@ const Questions = ({
   currentQuestion,
   setCurrentQuestion,
   setIsOpen,
-  setCurrentIndex,
 }) => {
   const questions = [
     {
@@ -57,7 +57,7 @@ const Questions = ({
       ],
     },
     {
-      questionText: 'Mars I the __ planet from the sun.',
+      questionText: 'Mars is the __ planet from the sun.',
       answerOptions: [
         { answerText: 'Second', isCorrect: false },
         { answerText: 'Third', isCorrect: false },
@@ -105,33 +105,52 @@ const Questions = ({
     },
   ];
 
+  const positions = [
+    [4, 3],
+    [4, 4],
+    [3, 4],
+    [2, 4],
+    [2, 3],
+    [3, 3],
+    [3, 2],
+  ];
+
   const [showScore, setShowScore] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const [score, setScore] = useState(0);
   const [battery, setBattery] = useState(3);
   const [message, setMessage] = useState('');
+  const [count, setCount] = useState(0);
   //   const [correct, setCorrect] = useState('');
+
+  let audio = new Audio(audioSignal);
+
+  const start = () => {
+    audio.play();
+  };
 
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
       setScore(score + 1);
-      const oldPosition = [...position];
-      oldPosition[0] = oldPosition[0] - 1;
-      oldPosition[1] = oldPosition[1] + 1;
-      setPosition(oldPosition);
+      //   const oldPosition = [...position];
+      //   oldPosition[0] = oldPosition[0] - 1;
+      //   oldPosition[1] = oldPosition[1] + 1;
+      setPosition(positions[count]);
+      setCount(count + 1);
       setMessage('Correct');
-      console.log(position);
-      console.log(score);
+      start();
+      //   console.log(position);
+      //   console.log(score);
     }
 
     if (!isCorrect) {
       setBattery(battery - 1);
       setMessage('Wrong');
-      console.log(battery);
+      //   console.log(battery);
     }
 
     const nextQuestion = currentQuestion + 1;
-    if (score < 3 && battery > 1) {
+    if (score < 6 && battery > 1) {
       setCurrentQuestion(nextQuestion);
       setShowAnswer(true);
     } else {
@@ -170,9 +189,9 @@ const Questions = ({
   useEffect(() => {
     const grid = () => {
       const output = [];
-      for (let i = 1; i <= 8; i++) {
+      for (let i = 1; i <= 5; i++) {
         let row = [];
-        for (let j = 1; j <= 8; j++) {
+        for (let j = 1; j <= 5; j++) {
           row.push(`${i} - ${j}`);
         }
         output.push(row);
