@@ -1,77 +1,97 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Questions = ({ setMapA, position, setPosition }) => {
   const questions = [
     {
-      questionText: 'Question 1... ?',
+      questionText: "How many moons does Mars have?",
       answerOptions: [
-        { answerText: 'AAAAAAAAAAA', isCorrect: false },
-        { answerText: 'BBBBBBBBBBB', isCorrect: false },
-        { answerText: 'CCCCCCCCCCC', isCorrect: true },
-        { answerText: 'DDDDDDDDDDD', isCorrect: false },
+        { answerText: "2", isCorrect: true },
+        { answerText: "4", isCorrect: false },
+        { answerText: "8", isCorrect: false },
+        { answerText: "12", isCorrect: false },
       ],
     },
     {
-      questionText: 'Question 2... ?',
+      questionText: "Mars is …",
       answerOptions: [
-        { answerText: 'AAAAAAAAAAA', isCorrect: false },
-        { answerText: 'BBBBBBBBBBB', isCorrect: false },
-        { answerText: 'CCCCCCCCCCC', isCorrect: true },
-        { answerText: 'DDDDDDDDDDD', isCorrect: false },
+        { answerText: "Bigger than Earth", isCorrect: false },
+        { answerText: "Smaller than Earth", isCorrect: true },
+        { answerText: "The closest planet to Earth", isCorrect: false },
+        { answerText: "Warmer than Earth", isCorrect: false },
       ],
     },
     {
-      questionText: 'Question 3... ?',
+      questionText: "What is Mars’s nickname?",
       answerOptions: [
-        { answerText: 'AAAAAAAAAAA', isCorrect: false },
-        { answerText: 'BBBBBBBBBBB', isCorrect: false },
-        { answerText: 'CCCCCCCCCCC', isCorrect: true },
-        { answerText: 'DDDDDDDDDDD', isCorrect: false },
+        { answerText: "The dusty planet", isCorrect: false },
+        { answerText: "The hot planet", isCorrect: false },
+        { answerText: "The orange planet", isCorrect: false },
+        { answerText: "The red planet", isCorrect: true },
       ],
     },
     {
-      questionText: 'Question 4... ?',
+      questionText: "About how long would it take to travel to Mars?",
       answerOptions: [
-        { answerText: 'AAAAAAAAAAA', isCorrect: false },
-        { answerText: 'BBBBBBBBBBB', isCorrect: false },
-        { answerText: 'CCCCCCCCCCC', isCorrect: true },
-        { answerText: 'DDDDDDDDDDD', isCorrect: false },
+        { answerText: "Three days", isCorrect: false },
+        { answerText: "A month", isCorrect: false },
+        { answerText: "Eight Months", isCorrect: true },
+        { answerText: "Two years", isCorrect: false },
       ],
     },
     {
-      questionText: 'Question 5... ?',
+      questionText: "How many astronauts walk on the surface of Mars?",
       answerOptions: [
-        { answerText: 'AAAAAAAAAAA', isCorrect: false },
-        { answerText: 'BBBBBBBBBBB', isCorrect: false },
-        { answerText: 'CCCCCCCCCCC', isCorrect: true },
-        { answerText: 'DDDDDDDDDDD', isCorrect: false },
+        { answerText: "0", isCorrect: true },
+        { answerText: "2", isCorrect: false },
+        { answerText: "4", isCorrect: false },
+        { answerText: "6", isCorrect: false },
       ],
     },
     {
-      questionText: 'Question 6... ?',
+      questionText: "Mars I the __ planet from the sun.",
       answerOptions: [
-        { answerText: 'AAAAAAAAAAA', isCorrect: false },
-        { answerText: 'BBBBBBBBBBB', isCorrect: false },
-        { answerText: 'CCCCCCCCCCC', isCorrect: true },
-        { answerText: 'DDDDDDDDDDD', isCorrect: false },
+        { answerText: "Second", isCorrect: false },
+        { answerText: "Third", isCorrect: false },
+        { answerText: "Fourth", isCorrect: true },
+        { answerText: "Sixth", isCorrect: false },
       ],
     },
     {
-      questionText: 'Question 7... ?',
+      questionText:
+        "Mars’s atmosphere has too much of which gas, making it impossible for humans to breathe without a space suit?",
       answerOptions: [
-        { answerText: 'AAAAAAAAAAA', isCorrect: false },
-        { answerText: 'BBBBBBBBBBB', isCorrect: false },
-        { answerText: 'CCCCCCCCCCC', isCorrect: true },
-        { answerText: 'DDDDDDDDDDD', isCorrect: false },
+        { answerText: "Carbon dioxide", isCorrect: true },
+        { answerText: "Hydrogen", isCorrect: false },
+        { answerText: "Oxygen", isCorrect: false },
+        { answerText: "Nitrogen", isCorrect: false },
       ],
     },
     {
-      questionText: 'Question 8... ?',
+      questionText: "What is the largest mountain on Mars?",
       answerOptions: [
-        { answerText: 'AAAAAAAAAAA', isCorrect: false },
-        { answerText: 'BBBBBBBBBBB', isCorrect: false },
-        { answerText: 'CCCCCCCCCCC', isCorrect: true },
-        { answerText: 'DDDDDDDDDDD', isCorrect: false },
+        { answerText: "Olympus Mons", isCorrect: true },
+        { answerText: "Mount Everest", isCorrect: false },
+        { answerText: "Manua Loa", isCorrect: false },
+        { answerText: "Tamu Massif", isCorrect: false },
+      ],
+    },
+    {
+      questionText: "How long is the day on Mars?",
+      answerOptions: [
+        { answerText: "around 16h40m", isCorrect: false },
+        { answerText: "around 24h40m", isCorrect: true },
+        { answerText: "around 35h20m", isCorrect: false },
+        { answerText: "around 48h10m", isCorrect: false },
+      ],
+    },
+    {
+      questionText:
+        "What was the name of the first NASA rover to land on Mars?",
+      answerOptions: [
+        { answerText: "Spirit", isCorrect: false },
+        { answerText: "Mars 1", isCorrect: false },
+        { answerText: "Opportunity", isCorrect: false },
+        { answerText: "Sojourner ", isCorrect: true },
       ],
     },
   ];
