@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Modal from 'react-modal';
 import Questions from './components/Questions';
 import Grid from './components/Grid';
+import WinCard from './components/WinCard';
 
 const customStyles = {
   content: {
@@ -49,7 +50,9 @@ function App() {
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
-      ></Modal>
+      >
+        <WinCard />
+      </Modal>
     </div>
   );
 }
