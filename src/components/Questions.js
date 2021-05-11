@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const Questions = ({ setMapA, position, setPosition }) => {
+const Questions = ({
+  setGrid,
+  position,
+  setPosition,
+  currentQuestion,
+  setCurrentQuestion,
+  setIsOpen,
+}) => {
   const questions = [
     {
       questionText: 'Question 1... ?',
@@ -76,9 +83,9 @@ const Questions = ({ setMapA, position, setPosition }) => {
     },
   ];
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+  const [battery, setBattery] = useState(3);
 
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
@@ -88,15 +95,25 @@ const Questions = ({ setMapA, position, setPosition }) => {
       oldPosition[1] = oldPosition[1] + 1;
       setPosition(oldPosition);
       console.log(position);
+      console.log(score);
+    }
+
+    if (!isCorrect) {
+      setBattery(battery - 1);
+      console.log(battery);
     }
 
     const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < questions.length) {
+    if (score < 3 && battery > 1) {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
     }
   };
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   useEffect(() => {
     const grid = () => {
@@ -111,8 +128,8 @@ const Questions = ({ setMapA, position, setPosition }) => {
       return output;
     };
 
-    setMapA(grid());
-  }, [setMapA]);
+    setGrid(grid());
+  }, [setGrid]);
 
   return (
     <div className="questions-div">
@@ -134,7 +151,13 @@ const Questions = ({ setMapA, position, setPosition }) => {
             {questions[currentQuestion].answerOptions.map((answerOption, i) => (
               <button
                 key={i}
-                onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
+                onClick={() => {
+                  /* (answsetIsCorrecterOption.isCorrect) */
+                  handleAnswerOptionClick(answerOption.isCorrect);
+                  setTimeout(() => {
+                    openModal();
+                  }, 1000); //wait 2 seconds
+                }}
               >
                 {answerOption.answerText}
               </button>

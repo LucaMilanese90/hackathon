@@ -1,15 +1,15 @@
-const Grid = ({ mapA, position }) => {
+const Grid = ({ grid, position }) => {
   return (
     <div className="grid">
-      {mapA?.map((row, i) =>
+      {grid?.map((row, i) =>
         row?.map((cell, index) => (
           <div
             key={cell}
             className={
               i + 1 === position[0] && index + 1 === position[1]
-                ? 'visible'
+                ? 'visible-moving'
                 : i === 1 && index === 6
-                ? 'visible'
+                ? 'visible-fixed'
                 : 'not-visible'
             }
           ></div>

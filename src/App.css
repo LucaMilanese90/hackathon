@@ -107,23 +107,30 @@ button svg {
   margin-right: 5px;
 }
 
-.visible {
-  background-color: azure;
+.visible-moving {
+  background: url('./assets/perci2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.not-visible {
-  background-color: none;
+.visible-fixed {
+  background: url('./assets/transparent.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.visible,
+.visible-moving,
+.visible-fixed,
 .not-visible {
-  width: 52;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   /* border: 1px solid black; */
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 52px 52px 52px 52px 52px 52px 52px 52px;
-  background-image: url('./assets/16x9_player 1.png');
+  grid-template-columns: repeat(8, 1fr);
+  background-image: url('./assets/Mars_Valles_Marineris.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
 }

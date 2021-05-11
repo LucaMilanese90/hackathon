@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 import Questions from './components/Questions';
 import Grid from './components/Grid';
 import WinCard from './components/WinCard';
+import Video from './components/Video';
+import Start from './components/Start';
 
 const customStyles = {
   content: {
@@ -17,18 +19,18 @@ const customStyles = {
   },
 };
 
+Modal.setAppElement('#root');
+
 function App() {
   const [position, setPosition] = useState([7, 2]);
-  const [mapA, setMapA] = useState([[]]);
+  const [grid, setGrid] = useState([[]]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
 
   // function afterOpenModal() {
   //   // references are now sync'd and can be accessed.
-  //   subtitle.style.color = '#f00';
+  //   setCurrentQuestion(currentQuestion + 1);
   // }
 
   function closeModal() {
@@ -37,22 +39,36 @@ function App() {
 
   return (
     <div className="App">
-      <Questions
-        setMapA={setMapA}
-        position={position}
-        setPosition={setPosition}
-      />
-      <Grid position={position} mapA={mapA} />
-      <button onClick={openModal}>Open Modal</button>
-      <Modal
-        isOpen={modalIsOpen}
-        /* onAfterOpen={afterOpenModal} */
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <WinCard />
-      </Modal>
+      <Switch>
+        <Route exact path="/">
+          <Video />
+        </Route>
+        <Route path="/start">
+          <Start />
+        </Route>
+        <Route path="/wrong"></Route>
+        <Route path="/results"></Route>
+        <Route path="/questions">
+          <Questions
+            setGrid={setGrid}
+            position={position}
+            setPosition={setPosition}
+            currentQuestion={currentQuestion}
+            setCurrentQuestion={setCurrentQuestion}
+            setIsOpen={setIsOpen}
+          />
+          <Grid position={position} grid={grid} />
+          <Modal
+            isOpen={modalIsOpen}
+            /*   onAfterOpen={afterOpenModal} */
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+          >
+            <WinCard />
+          </Modal>
+        </Route>
+      </Switch>
     </div>
   );
 }
