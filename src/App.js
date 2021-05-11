@@ -8,12 +8,15 @@ import WinCard from './components/WinCard';
 
 const customStyles = {
   content: {
-    top: '50%',
+    height: '70vh',
+    top: '40%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    marginRight: '-53%',
+    transform: 'translate(-53%, -50%)',
+    padding: '0',
+    borderRadius: '2em',
   },
 };
 

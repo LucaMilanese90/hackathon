@@ -1,10 +1,82 @@
-card-container{
+.card-container{
 width: 80vw;
-height: 50vh;
-display: flex;
-flex-direction: columns;
-
-justify-content: center;
+height: 100vh;
+text-align: center;
 background-color: #fafafa08;
 border-radius: 6px;
+background-color: white;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius:2em;
+  box-shadow: 0px 1rem 1.5rem rgba(black, 0.5);
+  background-size: 300%;
+  background-repeat: no-repeat;
+
 }
+
+h2.card-title{
+    color:black;
+    text-align: center;
+    padding: 0; 
+   margin-top: 3em;
+
+}
+
+p.card-paragraph{
+    color: black;
+    text-align: left;
+    font-size: 16px;
+    padding: 0 1em;
+
+}
+
+.card-banner{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjCNknWTJ2pDHvARNftDNbFDHzVBPP3KbFEQ&usqp=CAU") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 15rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+    
+}
+
+.card-icon{
+    background-color: white;
+    width: 8rem;
+    height: 8rem;
+    box-shadow: 0 0.5rem 1rem rgba(black, 0.3);
+    border-radius: 50%;
+    transform: translateY(50%);
+    transition: transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    margin-top: 4em;
+}
+
+.card-btn{
+        font-weight: bold;
+        background-color: #ffd01a;
+        text-align: center;
+        width: 60%;
+        border: none;
+        padding: 1rem;
+        outline: none;
+        box-sizing: border-box;
+        border-radius: 2em;
+        transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+.card-btn:hover{
+          background-color: #efb10a;
+          transform: scale(1.1);
+}
+
+.card-btn:active{
+          background-color: #e8a200;
+          transform: scale(1);
+}
+
+
