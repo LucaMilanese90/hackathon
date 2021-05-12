@@ -47,7 +47,7 @@ const Result = ({ message }) => {
   };
 
   return (
-    <div className="start-container">
+    <div className="start-container-result">
       <div className="start-article">
         <h1>{message ? 'Mission Accomplished!' : 'Mission failed!'}</h1>
         <p
