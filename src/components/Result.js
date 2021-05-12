@@ -43,7 +43,9 @@ const Result = ({ message }) => {
         <p
         /* className={guides[index].link}
           onClick={() => history.push('/questions')} */
-        ></p>
+        >
+          {message ? `Here you can follow the whole Mars Mission` : ``}
+        </p>
       </div>
     </div>
   );
