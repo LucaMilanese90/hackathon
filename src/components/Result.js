@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './Start.css';
+import './Result.css';
 
 const guides = [
   {
@@ -36,6 +36,16 @@ const Result = ({ message }) => {
   const [index, setIndex] = useState(0);
   const classLink = 'Classname';
 
+  const handleClick = () => {
+    if (message) {
+      window.open('https://mars.nasa.gov/mars2020/', '_blank');
+    }
+    if (!message) {
+      history.push('/start');
+      window.location.reload();
+    }
+  };
+
   return (
     <div className="start-container">
       <div className="start-article">
@@ -45,6 +55,9 @@ const Result = ({ message }) => {
           onClick={() => history.push('/questions')} */
         >
           {message ? `Here you can follow the whole Mars Mission` : ``}
+        </p>
+        <p className="start-link5" onClick={() => handleClick}>
+          {message ? `Mars mission` : `Try again`}
         </p>
       </div>
     </div>

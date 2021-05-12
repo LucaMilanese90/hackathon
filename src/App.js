@@ -8,6 +8,7 @@ import Grid from './components/Grid';
 import WinPage from './components/WinPage';
 import Video from './components/Video';
 import Start from './components/Start';
+import Result from './components/Result';
 
 const modalText = [
   'Mars has two moons. They’re named Phobos, meaning fear, and Deimos, which is Greek for panic.',
@@ -129,6 +130,9 @@ function App() {
               setCurrentIndex={setCurrentIndex}
             />
           </Modal>
+        </Route>
+        <Route path={'/result'}>
+          <Result message={message} />
         </Route>
       </Switch>
     </div>

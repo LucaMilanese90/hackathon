@@ -155,7 +155,8 @@ const Questions = ({
       //   openModal();
       setShowAnswer(true);
     } else {
-      setShowScore(true);
+      // setShowScore(true);
+      history.push('/result');
     }
   };
 
@@ -213,7 +214,8 @@ const Questions = ({
           setPosition={setPosition}
           count={count}
         />
-      ) : showScore && battery.length > 0 ? (
+      ) : (
+        /* showScore && battery.length > 0 ? (
         <div className="score-section">
           <h1>Mission accomplished!</h1>
         </div>
@@ -229,8 +231,7 @@ const Questions = ({
             Try again
           </button>
         </div>
-      ) : (
-        <>
+      ) */ <>
           <div className="question-section">
             <div className="battery-section">
               <span>Charge level {battery}</span>
