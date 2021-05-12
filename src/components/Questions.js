@@ -226,7 +226,7 @@ const Questions = ({
               <span>Charge level {battery}</span>
             </div>
             <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+              <span>{`${score} / 7`}</span>
             </div>
             <div className="question-text">
               {questions[currentQuestion].questionText}
