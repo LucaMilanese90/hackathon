@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
+import './Video.css';
 
 const Video = () => {
   const history = useHistory();
@@ -13,7 +14,13 @@ const Video = () => {
 
   return (
     <div onClick={() => history.push('/start')}>
-      <h1>I'm a video</h1>
+   
+      <div className = "gif-container">
+        <div className = "gif-title">
+    <h1>Pathfinders</h1>
+    </div>
+      </div>
+     
     </div>
   );
 };

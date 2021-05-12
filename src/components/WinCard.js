@@ -1,7 +1,7 @@
 import React from 'react';
 import './WinCard.css';
 import correct from '../assets/correct.png';
-import incorrect from '../assets/correct.png';
+import incorrect from '../assets/wrong.png';
 
 const WinCard = ({ modalData, setIsOpen, message }) => {
   return (
