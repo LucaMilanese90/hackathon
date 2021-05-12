@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import audioSignal from '../assets/audio-signal.m4a';
 import './Questions.css';
 import Answer from './Answer';
@@ -115,6 +116,7 @@ const Questions = ({
   const [battery, setBattery] = useState('|||');
   const [count, setCount] = useState(0);
   //   const [correct, setCorrect] = useState('');
+  const history = useHistory();
 
   let audio = new Audio(audioSignal);
 
@@ -218,6 +220,14 @@ const Questions = ({
       ) : showScore && battery.length === 0 ? (
         <div className="score-section">
           <h1>Mission failed!</h1>
+          <button
+            onClick={() => {
+              history.push('/start');
+              window.location.reload();
+            }}
+          >
+            Try again
+          </button>
         </div>
       ) : (
         <>

@@ -22,7 +22,9 @@
 
 .score-section {
   display: flex;
+  flex-direction: column;
   font-size: 24px;
+  justify-content: center;
   align-items: center;
 }
 
