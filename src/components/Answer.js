@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import './Answer.css'
+import './WinCard.css'
 const Answer = ({ setShowAnswer, setIsOpen, message, setPosition, count }) => {
   const [currentText, setCurrentText] = useState(1);
 
@@ -55,9 +57,9 @@ const Answer = ({ setShowAnswer, setIsOpen, message, setPosition, count }) => {
   ];
 
   return (
-    <div>
-      <h1>{message ? `Congrats!!!` : `Wrong!`}</h1>
-      <p>
+    <div className="message-container">
+      <h1 className="mess">{message ? `Congrats!!!` : `Wrong!`}</h1>
+      <p className='par-mess'>
         {message
           ? text[currentText - 1].paragTrue
           : text[currentText - 1].paragFalse}

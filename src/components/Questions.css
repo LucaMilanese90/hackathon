@@ -43,10 +43,12 @@
   font-weight: 600;
   letter-spacing: 5px;
   padding-bottom: 0.5em;
+  text-align: center;
 }
 
 .question-count span {
   font-size: 28px;
+ 
 }
 
 .question-text {
