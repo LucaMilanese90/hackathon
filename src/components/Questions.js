@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Answer from './Answer';
 import audioSignal from '../assets/audio-signal.m4a';
+import './Questions.css';
 
 const Questions = ({
   setGrid,
@@ -119,7 +120,7 @@ const Questions = ({
   const [showScore, setShowScore] = useState(false);
   //   const [showAnswer, setShowAnswer] = useState(false);
   const [score, setScore] = useState(0);
-  const [battery, setBattery] = useState(3);
+  const [battery, setBattery] = useState('|||');
   const [message, setMessage] = useState('');
   const [count, setCount] = useState(0);
   //   const [correct, setCorrect] = useState('');
