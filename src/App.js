@@ -125,6 +125,8 @@ function App() {
               modalData={modalData}
               setIsOpen={setIsOpen}
               message={message}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
             />
           </Modal>
         </Route>

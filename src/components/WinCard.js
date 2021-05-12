@@ -3,7 +3,13 @@ import './WinCard.css';
 import correct from '../assets/correct.png';
 import incorrect from '../assets/wrong.png';
 
-const WinCard = ({ modalData, setIsOpen, message }) => {
+const WinCard = ({
+  modalData,
+  setIsOpen,
+  message,
+  currentIndex,
+  setCurrentIndex,
+}) => {
   return (
     <div className="card-container">
       <img src={modalData.image} alt="Mars-view" />
@@ -18,7 +24,13 @@ const WinCard = ({ modalData, setIsOpen, message }) => {
         <h2 className="card-title">{message ? `Congrats!!!` : `Wrong!`}</h2>
 
         <p className="card-paragraph">{modalData.text}</p>
-        <button className="card-btn" onClick={() => setIsOpen(false)}>
+        <button
+          className="card-btn"
+          onClick={() => {
+            setIsOpen(false);
+            setCurrentIndex(currentIndex + 1);
+          }}
+        >
           Go back to the Questions
         </button>
       </div>
