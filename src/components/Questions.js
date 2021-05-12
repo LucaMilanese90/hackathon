@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import audioSignal from '../assets/audio-signal.m4a';
 import './Questions.css';
+import Answer from './Answer';
 
 const Questions = ({
   setGrid,
@@ -11,6 +12,7 @@ const Questions = ({
   setIsOpen,
   modalData,
   setMessage,
+  message,
 }) => {
   const questions = [
     {
@@ -107,18 +109,8 @@ const Questions = ({
     },
   ];
 
-  const positions = [
-    [4, 3],
-    [4, 4],
-    [3, 4],
-    [2, 4],
-    [2, 3],
-    [3, 3],
-    [3, 2],
-  ];
-
   const [showScore, setShowScore] = useState(false);
-  //   const [showAnswer, setShowAnswer] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
   const [score, setScore] = useState(0);
   const [battery, setBattery] = useState('|||');
   const [count, setCount] = useState(0);
@@ -140,7 +132,7 @@ const Questions = ({
       //   const oldPosition = [...position];
       //   oldPosition[0] = oldPosition[0] - 1;
       //   oldPosition[1] = oldPosition[1] + 1;
-      setPosition(positions[count]);
+      // setPosition(positions[count]);
       setCount(count + 1);
       setMessage(true);
       start();
@@ -159,7 +151,7 @@ const Questions = ({
     if (score < 6 && battery.length > 0) {
       setCurrentQuestion(nextQuestion);
       //   openModal();
-      //   setShowAnswer(true);
+      setShowAnswer(true);
     } else {
       setShowScore(true);
     }
@@ -211,13 +203,21 @@ const Questions = ({
 
   return (
     <div className="questions-div">
-      {showScore && battery.length > 0 ? (
+      {showAnswer ? (
+        <Answer
+          setShowAnswer={setShowAnswer}
+          setIsOpen={setIsOpen}
+          message={message}
+          setPosition={setPosition}
+          count={count}
+        />
+      ) : showScore && battery.length > 0 ? (
         <div className="score-section">
-          <h2>Mission accomplished!</h2>
+          <h1>Mission accomplished!</h1>
         </div>
       ) : showScore && battery.length === 0 ? (
         <div className="score-section">
-          <h2>Mission failed!</h2>
+          <h1>Mission failed!</h1>
         </div>
       ) : (
         <>
@@ -236,14 +236,16 @@ const Questions = ({
             {questions[currentQuestion].answerOptions.map((answerOption, i) => (
               <button
                 key={i}
-                onClick={() => {
-                  /* (answsetIsCorrecterOption.isCorrect) */
-                  handleAnswerOptionClick(answerOption.isCorrect);
+                onClick={
+                  () =>
+                    /* (answsetIsCorrecterOption.isCorrect) */
+                    handleAnswerOptionClick(answerOption.isCorrect)
                   /*  setCorrect(answerOption.isCorrect); */
-                  setTimeout(() => {
+                  /* setTimeout(() => {
                     openModal();
                   }, 1000);
-                }}
+                }} */
+                }
               >
                 {answerOption.answerText}
               </button>
