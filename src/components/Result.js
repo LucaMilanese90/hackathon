@@ -20,12 +20,12 @@ const Result = ({ message }) => {
 
   return (
     <div className="start-container-result">
-      <h1 className="title-result">
-        {message ? 'Mission Accomplished!' : 'Mission failed!'}
-      </h1>
       <div className="start-article-result">
+        <h1 className="title-result">
+          {message ? 'Mission Accomplished!' : 'Mission failed!'}
+        </h1>
         <p>{message ? `Here you can follow the whole Mars Mission` : ``}</p>
-        <p className="start-link5-result" onClick={() => handleClick()}>
+        <p className="start-link5" onClick={() => handleClick()}>
           {message ? `Mars mission` : `Try again`}
         </p>
       </div>
