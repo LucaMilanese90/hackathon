@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Answer from './Answer';
 import audioSignal from '../assets/audio-signal.m4a';
 import './Questions.css';
 
@@ -11,6 +10,7 @@ const Questions = ({
   setCurrentQuestion,
   setIsOpen,
   modalData,
+  setMessage,
 }) => {
   const questions = [
     {
@@ -121,7 +121,6 @@ const Questions = ({
   //   const [showAnswer, setShowAnswer] = useState(false);
   const [score, setScore] = useState(0);
   const [battery, setBattery] = useState('|||');
-  const [message, setMessage] = useState('');
   const [count, setCount] = useState(0);
   //   const [correct, setCorrect] = useState('');
 
@@ -143,20 +142,21 @@ const Questions = ({
       //   oldPosition[1] = oldPosition[1] + 1;
       setPosition(positions[count]);
       setCount(count + 1);
-      setMessage('Correct');
+      setMessage(true);
       start();
       //   console.log(position);
       //   console.log(score);
     }
 
     if (!isCorrect) {
-      setBattery(battery - 1);
-      setMessage('Wrong');
+      const newBattery = battery.slice(0, -1);
+      setBattery(newBattery);
+      setMessage(false);
       //   console.log(battery);
     }
 
     const nextQuestion = currentQuestion + 1;
-    if (score < 6 && battery > 1) {
+    if (score < 6 && battery.length > 0) {
       setCurrentQuestion(nextQuestion);
       //   openModal();
       //   setShowAnswer(true);
@@ -211,9 +211,13 @@ const Questions = ({
 
   return (
     <div className="questions-div">
-      {showScore ? (
+      {showScore && battery.length > 0 ? (
         <div className="score-section">
-          You scored {score} out of {questions.length}
+          <h2>Mission accomplished!</h2>
+        </div>
+      ) : showScore && battery.length === 0 ? (
+        <div className="score-section">
+          <h2>Mission failed!</h2>
         </div>
       ) : (
         <>
@@ -222,7 +226,7 @@ const Questions = ({
               <span>Charge level {battery}</span>
             </div>
             <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+              <span>{`${score} / 7`}</span>
             </div>
             <div className="question-text">
               {questions[currentQuestion].questionText}
