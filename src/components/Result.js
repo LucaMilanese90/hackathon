@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Result.css';
 
-
 const Result = ({ message }) => {
   const history = useHistory();
 
@@ -21,13 +20,12 @@ const Result = ({ message }) => {
 
   return (
     <div className="start-container-result">
-       <h1 className="title-result">{message ? 'Mission Accomplished!' : 'Mission failed!'}</h1>
+      <h1 className="title-result">
+        {message ? 'Mission Accomplished!' : 'Mission failed!'}
+      </h1>
       <div className="start-article-result">
-       
-        <p>
-          {message ? `Here you can follow the whole Mars Mission` : ``}
-        </p>
-        <p className="start-link5" onClick={() => handleClick}>
+        <p>{message ? `Here you can follow the whole Mars Mission` : ``}</p>
+        <p className="start-link5-result" onClick={() => handleClick()}>
           {message ? `Mars mission` : `Try again`}
         </p>
       </div>
