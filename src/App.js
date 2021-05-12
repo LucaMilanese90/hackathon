@@ -69,12 +69,10 @@ function App() {
     axios
       .get(apiLinks[currentIndex])
       .then((response) => {
-        console.log(response);
         setModalData({
           text: modalText[currentIndex],
           image: response.data.collection.items[0].links[0].href,
         });
-        console.log(modalData);
       })
       .catch(function (error) {
         // handle error
@@ -86,10 +84,6 @@ function App() {
     setIsOpen(false);
     setCurrentIndex(currentIndex + 1);
   }
-
-  useEffect(() => {
-    console.log(currentIndex);
-  }, [currentIndex]);
 
   return (
     <div className="App">
