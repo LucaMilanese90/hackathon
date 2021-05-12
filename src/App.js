@@ -12,15 +12,15 @@ import Result from './components/Result';
 
 const modalText = [
   'Mars has two moons. They’re named Phobos, meaning fear, and Deimos, which is Greek for panic.',
+  'With a diameter of around 6,700km it is half the size of Earth and about one-tenth its mass. It is the second smallest planet in our solar system after Mercury.',
   'Rusted iron particles in Mar’s rocks give the planet red hue. ',
   'Earth and Mars follow different orbit around the sun, so space explorers must wait until the two planets are closer together to blast off. Even then, the trip would take a minimum of about eight months',
-  'Scientists think Mars once had rivers, lakes, and maybe even oceans. Today small amount of water trickle down crater walls.',
+  'So far no man mission to mars took place. We are still waiting.',
   'Orbiting about 247,84 million km from the sun, Mars is the fourth planet after Mercury, Venus and Earth',
   'Carbon dioxide is a gas that we exhale—and too much can be toxic. To live on Mars we’d need a constant supply of breathable oxygen.',
   'Olympus Mons is the largest known volcano in the solar system. Stands almost three times as tall as Mount Everest.',
-  'With a diameter of around 6,700km it is half the size of Earth and about one-tenth its mass. It is the second smallest planet in our solar system after Mercury.',
-  'Sojourner was the first NASA rover to land on Mars on July 4, 1997. It was part of the Mars Pathfinder mission.',
   'Sol (borrowed from the Latin word for sun) is a solar day on Mars. A sol is slightly longer than an Earth day. It is approximately 24 hours, 39 minutes, 35 seconds long.',
+  'Sojourner was the first NASA rover to land on Mars on July 4, 1997. It was part of the Mars Pathfinder mission.',
 ];
 
 const apiLinks = [
