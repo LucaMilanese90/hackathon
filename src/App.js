@@ -8,6 +8,7 @@ import Grid from './components/Grid';
 import WinPage from './components/WinPage';
 import Video from './components/Video';
 import Start from './components/Start';
+import Result from './components/Result';
 
 const modalText = [
   'Mars has two moons. They’re named Phobos, meaning fear, and Deimos, which is Greek for panic.',
@@ -58,6 +59,7 @@ function App() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modalData, setModalData] = useState([{}]);
+  const [message, setMessage] = useState(true);
   // function afterOpenModal() {
   //   // references are now sync'd and can be accessed.
   //   setCurrentQuestion(currentQuestion + 1);
@@ -109,6 +111,8 @@ function App() {
             setCurrentQuestion={setCurrentQuestion}
             setIsOpen={setIsOpen}
             modalData={modalData}
+            setMessage={setMessage}
+            message={message}
           />
           <Grid position={position} grid={grid} />
           <Modal
@@ -118,8 +122,17 @@ function App() {
             style={customStyles}
             contentLabel="Example Modal"
           >
-            <WinPage modalData={modalData} setIsOpen={setIsOpen} />
+            <WinPage
+              modalData={modalData}
+              setIsOpen={setIsOpen}
+              message={message}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+            />
           </Modal>
+        </Route>
+        <Route path={'/result'}>
+          <Result message={message} />
         </Route>
       </Switch>
     </div>

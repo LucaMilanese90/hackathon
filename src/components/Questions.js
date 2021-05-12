@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Answer from './Answer';
+import { useHistory } from 'react-router-dom';
 import audioSignal from '../assets/audio-signal.m4a';
+import './Questions.css';
+import Answer from './Answer';
 
 const Questions = ({
   setGrid,
@@ -10,6 +12,8 @@ const Questions = ({
   setCurrentQuestion,
   setIsOpen,
   modalData,
+  setMessage,
+  message,
 }) => {
   const questions = [
     {
@@ -106,23 +110,13 @@ const Questions = ({
     },
   ];
 
-  const positions = [
-    [4, 3],
-    [4, 4],
-    [3, 4],
-    [2, 4],
-    [2, 3],
-    [3, 3],
-    [3, 2],
-  ];
-
   const [showScore, setShowScore] = useState(false);
-  //   const [showAnswer, setShowAnswer] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
   const [score, setScore] = useState(0);
-  const [battery, setBattery] = useState(3);
-  const [message, setMessage] = useState('');
+  const [battery, setBattery] = useState('|||');
   const [count, setCount] = useState(0);
   //   const [correct, setCorrect] = useState('');
+  const history = useHistory();
 
   let audio = new Audio(audioSignal);
 
@@ -140,27 +134,29 @@ const Questions = ({
       //   const oldPosition = [...position];
       //   oldPosition[0] = oldPosition[0] - 1;
       //   oldPosition[1] = oldPosition[1] + 1;
-      setPosition(positions[count]);
+      // setPosition(positions[count]);
       setCount(count + 1);
-      setMessage('Correct');
+      setMessage(true);
       start();
       //   console.log(position);
       //   console.log(score);
     }
 
     if (!isCorrect) {
-      setBattery(battery - 1);
-      setMessage('Wrong');
+      const newBattery = battery.slice(0, -1);
+      setBattery(newBattery);
+      setMessage(false);
       //   console.log(battery);
     }
 
     const nextQuestion = currentQuestion + 1;
-    if (score < 6 && battery > 1) {
+    if (score < 6 && battery.length > 0) {
       setCurrentQuestion(nextQuestion);
       //   openModal();
-      //   setShowAnswer(true);
+      setShowAnswer(true);
     } else {
-      setShowScore(true);
+      // setShowScore(true);
+      history.push('/result');
     }
   };
 
@@ -210,18 +206,38 @@ const Questions = ({
 
   return (
     <div className="questions-div">
-      {showScore ? (
-        <div className="score-section">
-          You scored {score} out of {questions.length}
-        </div>
+      {showAnswer ? (
+        <Answer
+          setShowAnswer={setShowAnswer}
+          setIsOpen={setIsOpen}
+          message={message}
+          setPosition={setPosition}
+          count={count}
+        />
       ) : (
-        <>
+        /* showScore && battery.length > 0 ? (
+        <div className="score-section">
+          <h1>Mission accomplished!</h1>
+        </div>
+      ) : showScore && battery.length === 0 ? (
+        <div className="score-section">
+          <h1>Mission failed!</h1>
+          <button
+            onClick={() => {
+              history.push('/start');
+              window.location.reload();
+            }}
+          >
+            Try again
+          </button>
+        </div>
+      ) */ <>
           <div className="question-section">
             <div className="battery-section">
               <span>Charge level {battery}</span>
             </div>
             <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+              <span>{`${score} / 7`}</span>
             </div>
             <div className="question-text">
               {questions[currentQuestion].questionText}
@@ -231,14 +247,16 @@ const Questions = ({
             {questions[currentQuestion].answerOptions.map((answerOption, i) => (
               <button
                 key={i}
-                onClick={() => {
-                  /* (answsetIsCorrecterOption.isCorrect) */
-                  handleAnswerOptionClick(answerOption.isCorrect);
+                onClick={
+                  () =>
+                    /* (answsetIsCorrecterOption.isCorrect) */
+                    handleAnswerOptionClick(answerOption.isCorrect)
                   /*  setCorrect(answerOption.isCorrect); */
-                  setTimeout(() => {
+                  /* setTimeout(() => {
                     openModal();
                   }, 1000);
-                }}
+                }} */
+                }
               >
                 {answerOption.answerText}
               </button>
