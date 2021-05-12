@@ -1,4 +1,4 @@
-# ![Pathfinders](./src/assets/perseverance.png)
+# ![Pathfinders](./src/assets/perseverance.png) ![Ginny](./src/assets/transparent.png)
 
 # Pathfinders
 
