@@ -111,6 +111,7 @@ function App() {
             setIsOpen={setIsOpen}
             modalData={modalData}
             setMessage={setMessage}
+            message={message}
           />
           <Grid position={position} grid={grid} />
           <Modal
