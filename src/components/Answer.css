@@ -1,0 +1,13 @@
+.message-container{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        align-items: center;
+        margin: 3em 0;
+      
+}
+
+p.par-mess{
+    margin-bottom: 2em;
+}
