@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/pathfinders/static/css/main.00974ec9.chunk.css",
+    "main.js": "/pathfinders/static/js/main.c4607c3b.chunk.js",
+    "main.js.map": "/pathfinders/static/js/main.c4607c3b.chunk.js.map",
+    "runtime-main.js": "/pathfinders/static/js/runtime-main.46c7b0e4.js",
+    "runtime-main.js.map": "/pathfinders/static/js/runtime-main.46c7b0e4.js.map",
+    "static/js/2.d17bb2f2.chunk.js": "/pathfinders/static/js/2.d17bb2f2.chunk.js",
+    "static/js/2.d17bb2f2.chunk.js.map": "/pathfinders/static/js/2.d17bb2f2.chunk.js.map",
+    "index.html": "/pathfinders/index.html",
+    "static/css/main.00974ec9.chunk.css.map": "/pathfinders/static/css/main.00974ec9.chunk.css.map",
+    "static/js/2.d17bb2f2.chunk.js.LICENSE.txt": "/pathfinders/static/js/2.d17bb2f2.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/pathfinders/static/media/transparent.a7df3522.png",
+    "static/media/audio-signal.be5d581c.m4a": "/pathfinders/static/media/audio-signal.be5d581c.m4a",
+    "static/media/correct.ba751698.png": "/pathfinders/static/media/correct.ba751698.png",
+    "static/media/Result.css": "/pathfinders/static/media/result-img.0e70e46e.jpg",
+    "static/media/Start.css": "/pathfinders/static/media/rover.870d828c.png",
+    "static/media/wrong.9b951271.png": "/pathfinders/static/media/wrong.9b951271.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.46c7b0e4.js",
+    "static/js/2.d17bb2f2.chunk.js",
+    "static/css/main.00974ec9.chunk.css",
+    "static/js/main.c4607c3b.chunk.js"
+  ]
+}
