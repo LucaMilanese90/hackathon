@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import audioSignal from '../assets/audio-signal.m4a';
-import './Questions.css';
-import Answer from './Answer';
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import audioSignal from '../assets/audio-signal.m4a'
+import './Questions.css'
+import Answer from './Answer'
 
 const Questions = ({
   setGrid,
@@ -108,57 +108,56 @@ const Questions = ({
         { answerText: 'Sojourner ', isCorrect: true },
       ],
     },
-  ];
+  ]
 
-  const [showScore, setShowScore] = useState(false);
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [score, setScore] = useState(0);
-  const [battery, setBattery] = useState('|||');
-  const [count, setCount] = useState(0);
+  const [showScore, setShowScore] = useState(false)
+  const [showAnswer, setShowAnswer] = useState(false)
+  const [score, setScore] = useState(0)
+  const [battery, setBattery] = useState('|||')
+  const [count, setCount] = useState(0)
   //   const [correct, setCorrect] = useState('');
-  const history = useHistory();
+  const history = useHistory()
 
-  let audio = new Audio(audioSignal);
+  let audio = new Audio(audioSignal)
 
   const start = () => {
-    audio.play();
-  };
+    audio.play()
+  }
 
   function openModal() {
-    setIsOpen(true);
+    setIsOpen(true)
   }
 
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
-      setScore(score + 1);
+      setScore(score + 1)
       //   const oldPosition = [...position];
       //   oldPosition[0] = oldPosition[0] - 1;
       //   oldPosition[1] = oldPosition[1] + 1;
       // setPosition(positions[count]);
-      setCount(count + 1);
-      setMessage(true);
-      start();
+      setCount(count + 1)
+      setMessage(true)
+      start()
       //   console.log(position);
       //   console.log(score);
     }
 
     if (!isCorrect) {
-      const newBattery = battery.slice(0, -1);
-      setBattery(newBattery);
-      setMessage(false);
-      //   console.log(battery);
+      const newBattery = battery.slice(0, -1)
+      setBattery(newBattery)
+      setMessage(false)
     }
 
-    const nextQuestion = currentQuestion + 1;
+    const nextQuestion = currentQuestion + 1
     if (score < 6 && battery.length > 0) {
-      setCurrentQuestion(nextQuestion);
+      setCurrentQuestion(nextQuestion)
       //   openModal();
-      setShowAnswer(true);
+      setShowAnswer(true)
     } else {
       // setShowScore(true);
-      history.push('/result');
+      history.push('/result')
     }
-  };
+  }
 
   //   useEffect(() => {
   //     if (correct) {
@@ -190,19 +189,19 @@ const Questions = ({
 
   useEffect(() => {
     const grid = () => {
-      const output = [];
+      const output = []
       for (let i = 1; i <= 5; i++) {
-        let row = [];
+        let row = []
         for (let j = 1; j <= 5; j++) {
-          row.push(`${i} - ${j}`);
+          row.push(`${i} - ${j}`)
         }
-        output.push(row);
+        output.push(row)
       }
-      return output;
-    };
+      return output
+    }
 
-    setGrid(grid());
-  }, [setGrid]);
+    setGrid(grid())
+  }, [setGrid])
 
   return (
     <div className="questions-div">
@@ -265,7 +264,7 @@ const Questions = ({
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Questions;
+export default Questions
